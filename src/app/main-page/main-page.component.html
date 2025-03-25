@@ -1,0 +1,20 @@
+<h1>Willkommen auf der Hauptseite!</h1>
+<div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+  <!-- <img src="./../../assets/img/banana.jpg" alt=""> -->
+  <ul>
+    <li class="fruit-list">
+      @for(post of posts; track $index) {
+        <h2>{{post.name}}</h2>
+        <img class="fruits-img" src="{{post.image}}" alt="">
+        <div class="like-container">
+          @if(post.isLiked) {
+            <img (click)="toggelLike($index)" class="like-img" src="./../../assets/img/heart-red.png" alt="">
+          } @else {
+            <img (click)="toggelLike($index)" class="like-img" src="./../../assets/img/heart-black.png" alt="">
+          }
+          <p>{{post.likes}}</p>
+        </div>
+    }
+    </li>
+  </ul>
+</div>
