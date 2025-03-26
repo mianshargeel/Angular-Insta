@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { SinglePostComponent } from './single-post/single-post.component';
 
 interface Post {
   name: string;
@@ -11,7 +12,7 @@ interface Post {
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SinglePostComponent],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
 })
@@ -29,16 +30,7 @@ export class MainPageComponent {
       likes: 5,
       isLiked: true
     },
-    // {
-    //   name: 'Black Heart',
-    //   image: './../../assets/img/heart-black.png',
-    //   likes: 9
-    // },
-    // {
-    //   name: 'Black Heart',
-    //   image: './../../assets/img/heart-red.png',
-    //   likes: 7
-    // },
+  
     {
       name: 'Orange',
       image: './../../assets/img/orange.jpg',
@@ -46,6 +38,7 @@ export class MainPageComponent {
       isLiked: false
     }
   ];
+  // messageFromParent: string = 'Hello from Parent';
 
   toggelLike(index: number) {
     if (this.posts[index].isLiked) {

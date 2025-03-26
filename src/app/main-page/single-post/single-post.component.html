@@ -1,0 +1,14 @@
+<!-- <p>single-post works! {{myPosts}}</p> -->
+<!-- <p>single-post works! {{singlePost}}</p> -->
+
+  <h2>{{singlePost.name}}</h2>
+  <img class="fruits-img" src="{{singlePost.image}}" alt="">
+      <div class="like-container"> 
+            @if(singlePost.isLiked) { <!-- if true -->
+              <img (click)="toggelLike(singlePost)" class="like-img" src="./../../assets/img/heart-red.png" alt="">
+            } @else {
+              <img (click)="toggelLike(singlePost)" class="like-img" src="./../../assets/img/heart-black.png" alt="">
+            }
+            <p>{{singlePost.likes}}</p> 
+          
+      </div>
