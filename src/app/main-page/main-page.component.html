@@ -4,7 +4,7 @@
   <ul>
     <li class="fruit-list">
       @for(post of posts; track post.name; let index = $index) {
-        <app-single-post [singlePost]="post"></app-single-post>
+        <app-single-post (userComment)="addComment($event, index)" [singlePost]="post"></app-single-post>
     }
     </li>
   </ul>

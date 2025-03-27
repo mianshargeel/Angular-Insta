@@ -1,13 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SinglePostComponent } from './single-post/single-post.component';
-
-interface Post {
-  name: string;
-  image: string;
-  likes: number;
-  isLiked: boolean;
-}
+import { Post } from '../interfaces/post';
 
 @Component({
   selector: 'app-main-page',
@@ -22,23 +16,30 @@ export class MainPageComponent {
       name: 'Banana',
       image: './../../assets/img/banana.jpg',
       likes: 50,
-      isLiked: false
+      isLiked: false,
+      comment: ['sehr Leker']
     },
     {
       name: 'Currant',
       image: './../../assets/img/currant.jpg',
       likes: 5,
-      isLiked: true
+      isLiked: true,
+      comment: [' Leker']
     },
   
     {
       name: 'Orange',
       image: './../../assets/img/orange.jpg',
       likes: 100,
-      isLiked: false
+      isLiked: false,
+      comment: ['sehr gesund']
     }
   ];
   // messageFromParent: string = 'Hello from Parent';
+
+  addComment(newComment: string, i: number) {
+    this.posts[i].comment.push(newComment);
+  }
 
   toggelLike(index: number) {
     if (this.posts[index].isLiked) {

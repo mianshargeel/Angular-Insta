@@ -5,10 +5,17 @@
   <img class="fruits-img" src="{{singlePost.image}}" alt="">
       <div class="like-container"> 
             @if(singlePost.isLiked) { <!-- if true -->
-              <img (click)="toggelLike(singlePost)" class="like-img" src="./../../assets/img/heart-red.png" alt="">
+              <img  (click)="toggelLike(singlePost)" class="like-img" src="./../../assets/img/heart-red.png" alt="">
             } @else {
               <img (click)="toggelLike(singlePost)" class="like-img" src="./../../assets/img/heart-black.png" alt="">
             }
             <p>{{singlePost.likes}}</p> 
+            <div>
+              <input [(ngModel)]="comment" type="text">
+              <button (click)="addUserComment()">add comment</button>
+              @for (comment of singlePost.comment; track $index) {
+                <p>Comment: {{comment}}</p>
+              }
+            </div>
           
       </div>

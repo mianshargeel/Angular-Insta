@@ -1,17 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-
-interface Post {
-  name: string;
-  image: string;
-  likes: number;
-  isLiked: boolean;
-}
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Post } from '../../interfaces/post';
 
 @Component({
   selector: 'app-single-post',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './single-post.component.html',
   styleUrl: './single-post.component.scss'
 })
@@ -23,9 +18,19 @@ export class SinglePostComponent {
       name: 'user error',
       image: 'error img.png',
       likes: 0,
-      isLiked: false
+      isLiked: false,
+      comment: []
   }
-  
+
+  @Output() userComment = new EventEmitter<string>();
+  comment: string = '';
+
+  addUserComment() {
+    this.userComment.emit(this.comment);
+    this.comment = '';//to keep clean input field
+  }
+
+
   toggelLike(singlePost: Post) {
     console.log(this.singlePost);
     
